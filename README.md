@@ -23,31 +23,28 @@ this illustrates how to connect to a solr 'database' in JDBC client manners, the
 
 the file 'src/java/test/sample.json' shows an example schema definition as below:
 
-
-
-{ 
-version: '1.0', 
-defaultSchema: 'solr', 
-schemas: [
-{ 
-name: 'solr', 
-tables: [ 
-{ 
-name: 'docs', 
-type: 'custom', factory: 'org.apache.calcite.adapter.solr.SolrTableFactory', 
-operand: { 
-solrServerURL: 'http://1.1.1.1:8380/solr/sample', //sample url 
-solrCollection: 'intellego', 
-//solrZkHosts: '10.0.0.0:8380', 
-columns:'id integer,age varchar', 
-columnMapping: 'id id,age age'
+{                  
+   "version": "1.0", 
+   "defaultSchema": "solr", 
+   "schemas": [
+              { 
+               "name": "solr", 
+               "tables": [ 
+                          { 
+                            "name": "docs", 
+                            "type": "custom", 
+							"factory": "org.apache.calcite.adapter.solr.SolrTableFactory", 
+                             "operand": { 
+                                        "solrServerURL": "http://1.1.1.1:8380/solr/sample", 
+                                        "solrCollection": "intellego", 
+                                        "columns":"id integer,age varchar", 
+                                        "columnMapping": "id id,age age"
+                                      }
+                          } 
+                       ] 
+              } 
+            ] 
 }
-} 
-] 
-} 
-] 
-}
-
 
 
 this defines a custom table named 'docs', several arguments can be defined in the operand field:
